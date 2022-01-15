@@ -50,6 +50,10 @@ ul {
     font-size: 24px;
     font-weight: var(--fw_bold);
 }
+.menu {
+    display: flex;
+    align-items: center;
+}
 .menu ul {
     display: flex;
 }
@@ -60,12 +64,35 @@ ul {
 .menu ul li a {
     font-size: 16px;
     font-weight: var(--fw_semi_bold);
+    position: relative;
+    display: inline-block;
+}
+.menu ul li a:before {
+    position: absolute;
+    content: '';
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: all 0.2s ease-out;
+}
+.menu ul li a:hover:before {
+    width: 100%;
+}
+.menu ul li a:nth-child(5):hover:before{
+    width: 0;
+}
+.menu-icon i{
+    padding-left: 20px;
+}
+.menu-icon i:first-child{
+    padding-left: 0px;
 }
 .main-mobile-header .logo h2,
 .main-mobile-header i {
     font-size: 16px;
 }
-
 /* End Menu */
 
 
@@ -259,32 +286,33 @@ ul {
 .t-effect {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
     gap: 30px;
     padding-bottom: 100px;
 }
-.flip-box {
+.effectOne {
     transform-style: preserve-3d;
     perspective: 1000px;
 }
-.flip-box-front,
-.flip-box-back {
+.effectOne-front,
+.effectOne-back {
     background-size: cover;
     background-position: center;
     border-radius: 5px;
     min-height: 475px;
     transition: transform 0.7s cubic-bezier(.4, .2, .2, 1);
 }
-.flip-box-front {
+.effectOne-front {
     transform: rotateY(0deg);
     transform-style: preserve-3d;
     background: #C33764;
     background: linear-gradient(45deg, #1D2671 10%, #C33764 80%);
 }
-.flip-box:hover .flip-box-front {
+.effectOne:hover .effectOne-front {
     transform: rotateY(-180deg);
     transform-style: preserve-3d;
 }
-.flip-box-back {
+.effectOne-back {
     position: absolute;
     top: 0;
     left: 0;
@@ -294,11 +322,11 @@ ul {
     background: #C33764;
     background: linear-gradient(-45deg, #1D2671 10%, #C33764 80%);
 }
-.flip-box:hover .flip-box-back {
+.effectOne:hover .effectOne-back {
     transform: rotateY(0deg);
     transform-style: preserve-3d;
 }
-.flip-box .inner {
+.effectOne .effectOne-inner {
     position: absolute;
     left: 0;
     width: 100%;
@@ -311,7 +339,86 @@ ul {
     font-size: 48px;
     color: #fff;
 }
-
+.effectTwo {
+    text-align: center;
+    border-radius: 5px;
+    background-color: #00000050;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.effectTwo h3 {
+    position: relative;
+    padding: 10px 20px;
+    border: 1px solid var(--primary-color);
+    font-size: 28px;
+    color: blueviolet;
+    transition: all 0.3s linear;
+    margin-bottom: 30px;
+}
+.effectTwo h3::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: #00575f;
+    opacity: 0;
+    transition: 0.2s all linear;
+    z-index: -1;
+}
+.effectTwo h3:hover {
+    color: #fff;
+    letter-spacing: 5px;
+}
+.effectTwo h3:hover::before {
+    width: 100%;
+    opacity: 1;
+}
+.item-1 {
+    position: relative;
+    text-decoration: none;
+    font-size: 20px;
+    color: #00575f;
+    display: inline-block;
+    margin-bottom: 30px;
+    transition: all 0.2s ease-out;
+}
+.item-1:before {
+    position: absolute;
+    content: '';
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: #00575f;
+    transition: all 0.2s ease-out;
+}
+.item-1:hover{
+    letter-spacing: 10px;
+}
+.item-1:hover:before {
+    width: 100%;
+}
+.effectThree{
+    position: relative;
+    padding: 10px;
+    background-color: #ffffff;
+    border: 1px solid #b6b6b6;
+    border-radius: 5px;
+    box-shadow: 0 70px 63px -60px #000000;
+    overflow: hidden;
+    transition: all 0.2s ease-in-out;
+}
+.effectThree img{
+    transition: all 0.2s ease-in-out;
+}
+.effectThree:hover img{
+    transform: rotate(10deg) scale(1.5);
+}
+.effectThree img{height: 100%;}
 /* End Transtions Section */
 
 
@@ -412,9 +519,18 @@ footer {
     .popular-box-img {
         height: auto;
     }
+    .t-effect {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2,1fr);
+}.effectTwo h3:hover {
+    letter-spacing: 2px;
+}
+    .item-1:hover{
+    letter-spacing: 2px;
+}
     /* End Banner Section */
 }
-@media screen and (max-width:768px) {
+@media screen and (max-width:375px) {
     .partner {
         padding-bottom: 50px;
     }
@@ -423,6 +539,10 @@ footer {
     }
     .popular-collection {
         grid-template-columns: repeat(1, 1fr);
-    }
+    }.t-effect {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(3,1fr);
+}
+    
     /* End Banner Section */
 }
